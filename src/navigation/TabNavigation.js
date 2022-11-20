@@ -6,15 +6,17 @@ const Tab= createBottomTabNavigator()
 import {FontAwesome} from "@expo/vector-icons"
 import Posts from "../screens/Posts/Posts"
 import Profile from '../screens/Profile/profile'
+import HomeNavigation from './HomeNavigation'
 
 function TabNavigation() {
   return (
     <Tab.Navigator>
         <Tab.Screen 
-            name={"Home"} 
-            component={Home}
+            name={"HomeNavigation"} 
+            component={HomeNavigation}
             options={{
-                tabBarIcon: () => <FontAwesome name='home' color={"blue"} size={32}/>
+                tabBarIcon: () => <FontAwesome name='home' color={"blue"} size={32}/>,
+                headerShown: false
             }}
         />
         <Tab.Screen 

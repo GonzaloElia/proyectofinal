@@ -58,8 +58,18 @@ class Post extends Component {
 
   render() {
     return (
+        <View>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("HomeNavigation", {
+                screen: "ProfileUsers",
+                params:{
+                    emailUser: this.props.data.owner
+                }
+            })}>
+                <Text>{this.props.data.owner}</Text>
+            </TouchableOpacity>    
       <View>
         <View>
+            <Text>Descripcion:</Text>
             <Text>{this.props.data.description}</Text>
         </View>
 
@@ -76,9 +86,13 @@ class Post extends Component {
             </TouchableOpacity>
             }
         </View>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate("Comments")}>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate(
+                "Comments",
+                {id: this.props.id}
+            )}>
             <Text>Agregar Comentario</Text>
         </TouchableOpacity>
+      </View>
       </View>
     )
   }

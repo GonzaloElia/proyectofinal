@@ -9,6 +9,7 @@ class Login extends Component {
         this.state={
             mail:"",
             pass:"",
+            users: [],
             logueado: false
         }
     }
@@ -27,6 +28,21 @@ class Login extends Component {
         .catch(err=>console.log(err))
     }
 
+    buscar(text){
+      //Filtramos dependiendo de que recibimos por parametro
+
+      let usersFilter = this.state.users.filter(elm =>
+          elm.email.toUpperCase().includes(text.toUpperCase())
+          ||
+          elm.usuario.toUpperCase().includes(text.toUpperCase()
+        ))
+
+      this.setState({
+        mail: text,
+        users: usersFilter
+      })
+    }
+
   render() {
     return (
       <View>
@@ -34,7 +50,7 @@ class Login extends Component {
         <View>
             <TextInput
             style={styles.input}
-            onChangeText={text => this.setState( {mail:text} )}
+            onChangeText={text => this.setState({email:text})}
             placeholder="Ingresa tu email"
             value={this.state.mail}
             />
