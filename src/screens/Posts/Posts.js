@@ -7,17 +7,19 @@ class Posts extends Component {
     constructor(){
         super()
         this.state={
-            commentValue:""
+            description:""
         }
     }
 
-    submitComment(text){
-        db.collection("comments").add({
+    enviarPost(text){
+        db.collection("posts").add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
-            comment: text
+            description: text,
+            likes:[],
+            comments:[]
         })
-        .then(()=> this.setState({commentValue:""}))
+        .then(()=> this.setState({postValue:""}))
         .catch(err=>console.log(err))
     }
 
@@ -27,15 +29,15 @@ class Posts extends Component {
                 <Text>Deja tu primer comentario</Text>
                 <View>
                     <TextInput
-                        placeholder='Dejanos tu opinion'
-                        value={this.state.commentValue}
+                        placeholder='Dejanos tu descripcion'
+                        value={this.state.description}
                         keyboardType='default'
-                        onChangeText={text => this.setState({commentValue: text})}
+                        onChangeText={text => this.setState({description: text})}
                         style={styles.input}
                     />
                     <View>
-                        <TouchableOpacity onPress={()=> this.submitComment(this.state.commentValue)}>
-                            <Text>Enviar comentario</Text>
+                        <TouchableOpacity onPress={()=> this.enviarPost(this.state.description)}>
+                            <Text>Enviar posts</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

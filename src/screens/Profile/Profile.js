@@ -1,6 +1,6 @@
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import React, { Component } from 'react'
-import {db} from "../../firebase/config"
+import {db, auth} from "../../firebase/config"
 
 class Profile extends Component {
 
@@ -31,10 +31,17 @@ class Profile extends Component {
         )
     }
 
+    signOut(){
+        auth.signOut()
+    }
+
     render() {
         return (
         <View>
             <Text>Profile</Text>
+            <TouchableOpacity onPress={()=> this.signOut()}>
+                <Text>Cerrar Sesión</Text>
+            </TouchableOpacity>
         </View>
         )
     }

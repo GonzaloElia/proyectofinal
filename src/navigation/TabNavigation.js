@@ -21,14 +21,14 @@ function TabNavigation() {
             name={"Posts"} 
             component={Posts}
             options={{
-                tabBarIcon: () => <FontAwesome name='posts' color={"blue"} size={32}/>
+                tabBarIcon: () => <FontAwesome name='circle' color={"lightblue"} size={34}/>
             }}
         />
         <Tab.Screen 
             name={"Profile"} 
             component={Profile}
             options={{
-                tabBarIcon: () => <FontAwesome name='profile' color={"blue"} size={32}/>
+                tabBarIcon: () => <FontAwesome name='at' color={"blue"} size={28}/>
             }}
         />
     </Tab.Navigator>
