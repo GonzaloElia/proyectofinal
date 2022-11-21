@@ -10,7 +10,8 @@ class Posts extends Component {
         this.state={
             description:"",
             mostrarCamara:true,
-            fotoUrl:""
+            fotoUrl:"",
+            username: ""
         }
     }
 
@@ -23,6 +24,9 @@ class Posts extends Component {
             comments:[],
             foto: this.state.fotoUrl
         })
+        // db.collection("users").add({
+        //     username: auth.currentUser.username
+        // })
         .then(()=> this.setState({postValue:""}))
         .catch(err=>console.log(err))
     }
@@ -50,7 +54,7 @@ class Posts extends Component {
                         onChangeText={text => this.setState({description: text})}
                         style={styles.input}
                         />
-                        <TouchableOpacity onPress={()=> this.enviarPost(this.state.description)}>
+                        <TouchableOpacity onPress={()=> this.enviarPost(this.state.description, this.state.foto)}>
                             <Text>Enviar posts</Text>
                         </TouchableOpacity>
                     </>

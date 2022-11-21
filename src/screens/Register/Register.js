@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import React, { Component } from 'react'
-import {auth} from "../../firebase/config"
+import {db, auth} from "../../firebase/config"
 
 class Register extends Component {
 
@@ -9,6 +9,7 @@ class Register extends Component {
       this.state={
         email:"",
         password:"",
+        username: "",
         error:""
       }
   }
@@ -21,9 +22,23 @@ class Register extends Component {
     })
   }
 
-  registrar(email, password){
+  registrar(email, password, username){
     auth.createUserWithEmailAndPassword(email, password)
-    .then(resp=>this.props.navigation.navigate("TabNavigation"))
+    .then(resp=> {
+      db.collection('users').add({
+        owner: email,
+        username: username,
+        createdAt: Date.now()
+    })
+    .then(()=> {
+        this.setState({
+            email: '',
+            password:'',
+            username:""
+        })
+        this.props.navigation.navigate('TabNavigation')
+    })
+    })
     .catch(err=>this.setState({error:err.message}))
   }
 
@@ -31,6 +46,12 @@ class Register extends Component {
     return (
       <View>
         <Text>Register</Text>
+        <TextInput
+            style={styles.input}
+            placeholder="Escribi tu nombre de usuario"
+            onChangeText={(text) => this.setState({username: text})}
+            value={this.state.username}
+        />
         <TextInput
             style={styles.input}
             placeholder="Escribi tu email"
@@ -45,7 +66,7 @@ class Register extends Component {
             secureTextEntry={true}
         />
         <View>
-            <TouchableOpacity onPress={()=>this.registrar(this.state.email, this.state.password)}>
+            <TouchableOpacity onPress={()=>this.registrar(this.state.email, this.state.password, this.state.username)}>
                 <Text>Registrar usuario</Text>
             </TouchableOpacity>
         </View>

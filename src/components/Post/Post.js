@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from "../../firebase/config"
 import firebase from 'firebase'
@@ -68,6 +68,13 @@ class Post extends Component {
                 <Text>{this.props.data.owner}</Text>
             </TouchableOpacity>    
       <View>
+      <View>
+      <Image 
+            style={styles.foto}
+            source={{uri: this.props.data.foto}}
+            resizeMode='cover'
+        />
+        </View>
         <View>
             <Text>Descripcion:</Text>
             <Text>{this.props.data.description}</Text>
@@ -97,4 +104,15 @@ class Post extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+    foto:{
+        marginTop: 10,
+        marginBottom: 8,
+        height:300,
+        width: 300,
+        borderRadius: 8,
+    }
+})
+
 export default Post

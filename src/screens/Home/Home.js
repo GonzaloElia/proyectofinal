@@ -1,4 +1,4 @@
-import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { Text, View, FlatList, StyleSheet, ScrollView } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from "../../firebase/config"
 import Post from '../../components/Post/Post'
@@ -13,7 +13,7 @@ class Home extends Component {
 
     componentDidMount(){
         db.collection('posts')
-        .limit(3)
+        .limit(15)
         .onSnapshot(docs => {
             let posteos = []
             docs.forEach(doc => {
@@ -30,14 +30,13 @@ class Home extends Component {
   
     render() {
         return (
-        <View styles={styles.container}>
-            <Text>Home</Text>
+        <ScrollView styles={styles.container}>
             <FlatList
                 data={this.state.allPosts}
                 keyExtractor={(item)=> item.id.toString()}
                 renderItem={({item}) => <Post navigation={this.props.navigation} id={item.id} data={item.data} />}
             />
-        </View>
+        </ScrollView>
         )
     }
 }

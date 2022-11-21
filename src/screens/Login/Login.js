@@ -9,6 +9,7 @@ class Login extends Component {
         this.state={
             mail:"",
             pass:"",
+            username: "",
             users: [],
             logueado: false
         }
