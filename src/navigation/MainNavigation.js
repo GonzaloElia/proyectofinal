@@ -6,6 +6,8 @@ import Login from '../screens/Login/Login'
 import Register from '../screens/Register/Register'
 import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/Comments'
+import OtroProfile from '../screens/OtroProfile/OtroProfile'
+import EditarPerfil from '../screens/EditarPerfil/EditarPerfil'
 
 const Stack=createNativeStackNavigator()
 
@@ -35,6 +37,21 @@ function MainNavigation() {
             name="Comments"
             component={Comments}
         />
+        <Stack.Screen
+            name='OtroProfile'
+            component={OtroProfile}
+            //options={{
+            //}}
+        />
+
+        <Stack.Screen
+            name='EditarPerfil'
+            component={EditarPerfil}
+                        //options={{
+                        //}}
+        />
+
+        
     </Stack.Navigator>
     </NavigationContainer>
   )

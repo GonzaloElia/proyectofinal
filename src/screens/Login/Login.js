@@ -11,7 +11,8 @@ class Login extends Component {
             pass:"",
             username: "",
             users: [],
-            logueado: false
+            logueado: false,
+            errores: ''
         }
     }
 
@@ -26,10 +27,13 @@ class Login extends Component {
     loguear(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
         .then(resp=> this.props.navigation.navigate("TabNavigation"))
-        .catch(err=>console.log(err))
+        .catch( error => {
+          this.setState({errores: error.message})
+        })
     }
 
     buscar(text){
+
       //Filtramos dependiendo de que recibimos por parametro
 
       let usersFilter = this.state.users.filter(elm =>
@@ -49,11 +53,12 @@ class Login extends Component {
       <View>
         <Text>Login</Text>
         <View>
+        <Text>{this.state.errores}</Text>
             <TextInput
             style={styles.input}
             onChangeText={text => this.setState({email:text})}
             placeholder="Ingresa tu email"
-            value={this.state.mail}
+            value={this.state.email}
             />
 
             <TextInput

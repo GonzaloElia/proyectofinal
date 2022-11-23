@@ -23,10 +23,14 @@ class Posts extends Component {
             likes:[],
             comments:[],
             foto: this.state.fotoUrl
+        }
+        )
+        .then(() => {
+            this.props.navigation.navigate('HomeNavigation')
         })
-        // db.collection("users").add({
-        //     username: auth.currentUser.username
-        // })
+        db.collection("users").add({
+             username: auth.currentUser.username
+        })
         .then(()=> this.setState({postValue:""}))
         .catch(err=>console.log(err))
     }
@@ -54,7 +58,8 @@ class Posts extends Component {
                         onChangeText={text => this.setState({description: text})}
                         style={styles.input}
                         />
-                        <TouchableOpacity onPress={()=> this.enviarPost(this.state.description, this.state.foto)}>
+                        <TouchableOpacity onPress={()=> this.enviarPost(this.state.description, this.state.foto,
+                            )}>
                             <Text>Enviar posts</Text>
                         </TouchableOpacity>
                     </>
