@@ -79,14 +79,9 @@ class Profile extends Component {
                     this.state.user.length == 0 ?
                     <Text>''</Text> :
                         <View style={styles.containerProfile}>
-                            <View>
+                            <View syle={styles.nombre}>
                                 <Text style={styles.text}> {this.state.user.data.username} </Text>
                             </View>
-                          <Image
-                                style={styles.foto}
-                                source={{uri: this.state.user.data.photo}}
-                                resizeMode='cover'
-                          />
                             <View style={styles.containerInfo}>
                                
                             <Text style={styles.text}> {this.state.user.data.miniBio} </Text>
@@ -131,14 +126,16 @@ const styles = StyleSheet.create({
         flex: 2
     },
     container: {
-        backgroundColor: '#1f2124',
+        backgroundColor: '#DFCAA0',
         flex: 2,
         alignItems: 'left',
         marginLeft: 5
-
-
-
     },
+
+    nombre:{
+        marginTop: 30
+    },
+
     containerProfile: {
         flexDirection: 'column'
     },
@@ -153,12 +150,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         textAlign: 'left',     
-        marginTop:'2%'
+        marginTop:'5%',
+        paddingLeft: 10
 
     },
-
+    
     text2: {
-        backgroundColor: '#c7f7f7',
+        backgroundColor: 'green',
         color: '#1f2124',
         fontFamily: 'Raleway, sans-serif;',
         fontSize: 22,

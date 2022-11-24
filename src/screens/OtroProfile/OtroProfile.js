@@ -11,7 +11,6 @@ class OtroProfile extends Component {
             email: '',
             userName: '',
             miniBio: '',
-            photo: '',
             cantPost:'',
             posts: [],
             error: ''
@@ -34,7 +33,6 @@ class OtroProfile extends Component {
                     userName: user[0].data.userName,
                     miniBio: user[0].data.miniBio,
                     email: user[0].data.owner,
-                    photo: user[0].data.photo
                 }, () => console.log(this.state))
             })
         })
@@ -67,12 +65,7 @@ class OtroProfile extends Component {
                             <View>
                                 <Text style={styles.text}> mail: {this.state.email} </Text>
                             </View>
-                           
-                          { <Image
-                                style={styles.foto}
-                                source={this.state.photo}
-                                resizeMode='cover'
-                          /> } 
+
                             <View style={styles.containerInfo}>
                                
                                 <Text style={styles.text}> {this.state.miniBio} </Text>
@@ -85,7 +78,7 @@ class OtroProfile extends Component {
                         </View> 
                 }  
 
-                <Text style={styles.text2}> Lista de sus {this.state.posts.length} posteos  </Text>
+                <Text style={styles.text2}> Ha realizado {this.state.posts.length} posteos  </Text>
                 <FlatList
                     data={this.state.posts}
                     keyExtractor={(item) => item.id.toString()}
@@ -104,13 +97,10 @@ const styles = StyleSheet.create({
         flex: 2
     },
     container: {
-        backgroundColor: '#1f2124',
+        backgroundColor: '#DFCAA0',
         flex: 2,
         alignItems: 'left',
         marginLeft: 5
-
-
-
     },
     containerProfile: {
         flexDirection: 'column'
@@ -131,7 +121,7 @@ const styles = StyleSheet.create({
     },
 
     text2: {
-        backgroundColor: '#c7f7f7',
+        backgroundColor: 'green',
         color: '#1f2124',
         fontFamily: 'Raleway, sans-serif;',
         fontSize: 22,

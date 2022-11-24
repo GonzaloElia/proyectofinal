@@ -61,7 +61,7 @@ class EditarPerfil extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Edita tus datos</Text>
+                <Text style={styles.text}>Editar datos</Text>
                 <View style={styles.box}>
                     <Text style={styles.alert}>{this.state.error}</Text>
 
@@ -81,8 +81,8 @@ class EditarPerfil extends Component {
                         style={styles.input}
                     />
 
-                    <TouchableOpacity onPress={() => this.changePassword()}>
-                        <Text style={styles.button}>Change password</Text>
+                    <TouchableOpacity style={styles.submit} onPress={() => this.changePassword()}>
+                        <Text style={styles.button}>Cambiar contraseña</Text>
                         <Text>{this.state.message}</Text>
                     </TouchableOpacity>
 
@@ -104,7 +104,7 @@ class EditarPerfil extends Component {
 
 
 
-                    <TouchableOpacity onPress={() => this.editarPerfil()}>
+                    <TouchableOpacity style={styles.submit} onPress={() => this.editarPerfil()}>
                         <Text style={styles.button}>Editar</Text>
                     </TouchableOpacity>
 
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2124'
     },
     box: {
-        backgroundColor: '#c7f7f7',
+        backgroundColor: '#90EE90',
         width: '80%',
         borderRadius: '5%',
         justifyContent: 'center',
@@ -147,9 +147,16 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     button: {
-        backgroundColor: 'white',
-        borderRadius: '5%'
+    color: 'white'
     },
+    submit: {
+        padding: 5,
+        color: 'white',
+        backgroundColor: 'green',
+        borderRadius: 5,
+        marginTop: 30,
+        marginBottom: 60
+      },
     text: {
         fontFamily: 'Oswald, sans-serif',
         color: 'white',

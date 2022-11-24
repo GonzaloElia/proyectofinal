@@ -9,7 +9,6 @@ class Buscador extends Component {
         this.state = {
             users: [],
             result: [],
-            backup: [],
             input: '',
             search: false
 
@@ -27,13 +26,11 @@ class Buscador extends Component {
                     })
                 })
                 this.setState({
-                    users: user,
-                    backup: user
+                    users: user
                 })
                 console.log(this.state)
             }
         )
-
     }
 
 
@@ -41,8 +38,8 @@ class Buscador extends Component {
         console.log(this.state.users);
         console.log(this.state.result);
 
-        let arrayFiltrado = this.state.users.filter(user => {
-            if (user.data.username.toLowerCase().includes(text.toLowerCase())) {
+        let arrayFiltrado = this.state.users.filter
+        (user => { if (user.data.username.toLowerCase().includes(text.toLowerCase())) {
                 return user
             };
         }
@@ -71,7 +68,7 @@ class Buscador extends Component {
 
                 {
                     this.state.result.length == 0 && this.state.search == true ?
-                        <Text style={styles.message}>Usuario inexistente</Text> :
+                        <Text style={styles.message}> Usuario inexistente </Text> :
 
                         <View style={styles.container}>
                             <FlatList

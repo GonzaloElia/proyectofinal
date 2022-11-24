@@ -11,12 +11,12 @@ import Buscador from '../screens/Buscador/Buscador'
 
 function TabNavigation() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{tabBarShowLabel:false}}>
         <Tab.Screen 
             name={"HomeNavigation"} 
             component={HomeNavigation}
             options={{
-                tabBarIcon: () => <FontAwesome name='home' color={"blue"} size={32}/>,
+                tabBarIcon: () => <FontAwesome name='home' color={"green"} size={32}/>,
                 headerShown: false
             }}
         />
@@ -24,21 +24,21 @@ function TabNavigation() {
             name={"Posts"} 
             component={Posts}
             options={{
-                tabBarIcon: () => <FontAwesome name='circle' color={"lightblue"} size={34}/>
+                tabBarIcon: () => <FontAwesome name='circle' color={"lightgreen"} size={34}/>
             }}
         />
         <Tab.Screen 
             name={"Profile"} 
             component={Profile}
             options={{
-                tabBarIcon: () => <FontAwesome name='at' color={"blue"} size={28}/>
+                tabBarIcon: () => <FontAwesome name='at' color={"green"} size={28}/>
             }}
         />
         <Tab.Screen 
             name={"Buscador"} 
             component={Buscador}
             options={{
-                tabBarIcon: () => <FontAwesome name='search' color={"blue"} size={32}/>,
+                tabBarIcon: () => <FontAwesome name='search' color={"green"} size={32}/>,
                 headerShown: false
             }}
         />
