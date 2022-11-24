@@ -44,36 +44,37 @@ class Register extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Register</Text>
+      <View style={styles.container}>
+        <View style={styles.caja}>
+        <Text style={styles.subtitulo}>Complete los pasos para registrarse</Text>
         <TextInput
-            style={styles.input}
+            style={styles.perinput}
             placeholder="Escribi tu nombre de usuario"
             onChangeText={(text) => this.setState({username: text})}
             value={this.state.username}
         />
         <TextInput
-            style={styles.input}
+            style={styles.sdoinput}
             placeholder="Escribi tu email"
             onChangeText={(text) => this.setState({email: text})}
             value={this.state.email}
         />
         <TextInput
-            style={styles.input}
+            style={styles.terinput}
             placeholder="Escribi tu contraseña"
             onChangeText={(text) => this.setState({password: text})}
             value={this.state.password}
             secureTextEntry={true}
         />
         <View>
-            <TouchableOpacity onPress={()=>this.registrar(this.state.email, this.state.password, this.state.username)}>
-                <Text>Registrar usuario</Text>
+            <TouchableOpacity style={styles.submit} onPress={()=>this.registrar(this.state.email, this.state.password, this.state.username)}>
+                <Text style={styles.textregi}>Registrar usuario</Text>
             </TouchableOpacity>
         </View>
         <View>
-            <Text>Ya tienes una cuenta?</Text>
+            <Text style={styles.pregunta}>Ya tienes una cuenta?</Text>
             <TouchableOpacity onPress={()=> this.props.navigation.navigate("Login")}>
-                <Text>Logueate</Text>
+                <Text style={styles.botonlogin}>Logueate</Text>
             </TouchableOpacity>
         </View>
         {
@@ -82,13 +83,82 @@ class Register extends Component {
           ""
         }
       </View>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  input:{
-    borderWidth:1
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+},
+caja: {
+    height: '95%',
+    width: '95%',
+    textAlign: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    paddingBottom: 15
+},
+  subtitulo: {
+    fontSize: 20,
+    alignItems: 'center',
+    fontWeight: 'bold',
+    marginTop: 50
+  },
+  submit: {
+    padding: 5,
+    color: 'white',
+    backgroundColor: 'green',
+    borderRadius: 5,
+    marginTop: 30,
+    marginBottom: 60
+  },
+  perinput:{
+  width: '80%',
+  borderWidth: 1,
+  borderColor: '#CCCCCC',
+  color: '#535353',
+  borderRadius: 1,
+  paddingLeft: 10,
+  marginTop: 70,
+  shadowOpacity: 20  },
+
+  textregi:{
+    color: 'white'
+  },
+  botonlogin:{
+    textDecorationLine: 'underline'
+  },
+
+  sdoinput:{
+  width: '80%',
+  borderWidth: 1,
+  borderColor: '#CCCCCC',
+  color: '#535353',
+  borderRadius: 1,
+  paddingLeft: 10,
+  marginTop: 20,
+  shadowOpacity: 20
+  },
+
+  pregunta:{
+    fontWeight: 'bold',
+  },
+
+  terinput:{
+  width: '80%',
+  borderWidth: 1,
+  borderColor: '#CCCCCC',
+  color: '#535353',
+  borderRadius: 1,
+  paddingLeft: 10,
+  marginTop: 20,
+  shadowOpacity: 20
   }
 })
 
