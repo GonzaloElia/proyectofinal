@@ -127,6 +127,16 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: '#1f2124'
     },
+    campodetexto: {
+        paddingLeft: 5,
+        borderRadius: 2,
+        borderWidth: 1,
+        borderColor: '#CCCCCC',
+        borderLeftColor: '#000000',   
+        color: '#535353',
+        textAlign: 'center',
+        margin: 5
+    },
     box: {
         backgroundColor: '#90EE90',
         width: '80%',

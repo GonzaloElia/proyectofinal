@@ -56,7 +56,7 @@ class Buscador extends Component {
 
         return (
             <View style={styles.containerPrincipal}>
-                <Text style={styles.title}>Buscar usuario</Text>
+                <Text style={styles.title}>Busca un usuario</Text>
 
                 <TextInput
                     style={styles.boton}
@@ -72,11 +72,12 @@ class Buscador extends Component {
 
                         <View style={styles.container}>
                             <FlatList
+                                style={styles.lista}
                                 data={this.state.result}
                                 keyExtractor={item => item.id.toString()}
                                 renderItem={({ item }) =>
                                     <>
-                                        <TouchableOpacity onPress={() => this.props.navigation.navigate('OtroProfile', { email: item.data.owner })}>
+                                        <TouchableOpacity style={styles.botoncito} onPress={() => this.props.navigation.navigate('OtroProfile', { email: item.data.owner })}>
                                             <Text style={styles.users}>{item.data.username}</Text>
                                         </TouchableOpacity>
                                     </>
@@ -94,21 +95,25 @@ class Buscador extends Component {
 }
 const styles = StyleSheet.create({
     containerPrincipal: {
-        backgroundColor: '#1f2124',
+        backgroundColor: '#DFCAA0',
         flex: 1
     },
     container: {
         marginTop: 0
     },
     title: {
-        fontFamily: 'Oswald, sans-serif',
-        color: '#1f2124',
+        fontFamily: 'sans-serif',
+        color: 'green',
         fontWeight: 'bold',
-        fontSize: 35,
+        fontSize: 25,
         textAlign: 'center',
-        backgroundColor: '#c7f7f7',
-        marginBottom: 70,
-        marginTop:10
+        backgroundColor: '#DFCAA0',
+        marginBottom: 10,
+        marginTop:40,
+        marginRight:160
+    },
+    lista:{
+        marginTop: 10
     },
     boton: {
         backgroundColor: 'white',
@@ -118,26 +123,31 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 4,
         color: 'black',
-        alignContent: 'center'
+        alignContent: 'center',
     },
     message: {
-        color: 'white',
-        marginTop: 0,
+        color: 'red',
+        marginTop: 30,
         fontFamily: 'Raleway, sans-serif;',
         fontSize: 20,
         marginLeft: '0',
-        fontWeight: 'bold'
-    },
-    users: {
-        color: 'white',
-        marginTop: 0,
-        fontFamily: 'Raleway, sans-serif;',
-        fontSize: 24,
-        marginLeft: '0',
         fontWeight: 'bold',
-        flexDirecion: 'wrap',
-        textAlign: 'center',
-        textDecorationLine: 'underline',
+        textAlign: 'center'
+    },
+    botoncito:{
+        marginLeft:40
+    },
+
+    
+
+    users: {
+        color: 'black',
+        marginTop: 0,
+        fontFamily: 'Raleway',
+        fontSize: 24,
+        marginLeft: '90',
+        textAlign: 'left',
+        textDecorationLine: 'underline'
     }
 })
 

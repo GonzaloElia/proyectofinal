@@ -28,9 +28,9 @@ class Home extends Component {
         })
     }
   
-    render() {
+    render() {  
         return (
-        <ScrollView styles={styles.container}>
+        <ScrollView style={styles.container}>
             <FlatList
                 data={this.state.allPosts}
                 keyExtractor={(item)=> item.id.toString()}
@@ -38,13 +38,14 @@ class Home extends Component {
             />
         </ScrollView>
         )
+        
     }
 }
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#90EE90'
+        backgroundColor:'#DFCAA0'
     }
 })
 
